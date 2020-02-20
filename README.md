@@ -7,13 +7,13 @@ This library helps along to fetch geo-location within a saga (or any other gener
 # Installation
 
 ```bash
-yarn add redux-saga-location
+yarn add redux-saga-location @react-native-community/geolocation
 ```
 
 or
 
 ```bash
-npm install redux-saga-location --save
+npm install redux-saga-location @react-native-community/geolocation --save
 ```
 
 # Setup
