@@ -7,7 +7,7 @@ import {
 
 export const getCurrentPositionThunk = options => dispatch => {
   dispatch({ type: REDUX_SAGA_LOCATION_ACTION_REQUEST });
-  GeoLocation.getCurrentPosition(
+  Geolocation.getCurrentPosition(
     position => {
       dispatch({ type: REDUX_SAGA_LOCATION_ACTION_SET_POSITION, position });
     },
@@ -18,7 +18,7 @@ export const getCurrentPositionThunk = options => dispatch => {
 
 export const watchCurrentPositionThunk = options => dispatch => {
   dispatch({ type: REDUX_SAGA_LOCATION_ACTION_REQUEST });
-  GeoLocation.watchPosition(
+  Geolocation.watchPosition(
     position => {
       dispatch({ type: REDUX_SAGA_LOCATION_ACTION_SET_POSITION, position });
     },
