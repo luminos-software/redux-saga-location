@@ -3,58 +3,61 @@ import {
   REDUX_SAGA_LOCATION_ACTION_SET_ERROR,
   REDUX_SAGA_LOCATION_ACTION_SET_POSITION,
   REDUX_SAGA_LOCATION_CLEAR_REQUEST,
-  REDUX_SAGA_LOCATION_STOP_REQUEST
-} from '../actions';
+  REDUX_SAGA_LOCATION_STOP_REQUEST,
+} from "../actions";
 
-export default function locationReducer(state = {
+export default function locationReducer(
+  state = {
     position: null,
     error: null,
-    fetching: false
-}, action) {
-  switch(action.type) {
-
+    fetching: false,
+  },
+  action
+) {
+  switch (action.type) {
     case REDUX_SAGA_LOCATION_ACTION_REQUEST: {
       return {
         ...state,
-        fetching: true
-      }
+        fetching: true,
+      };
     }
 
     case REDUX_SAGA_LOCATION_ACTION_SET_POSITION: {
-      const {position} = action;
+      const { position } = action;
 
       return {
         ...state,
         position,
         error: null,
-        fetching: false
-      }
+        fetching: false,
+      };
     }
 
     case REDUX_SAGA_LOCATION_ACTION_SET_ERROR: {
-      const {error} = action;
+      const { error } = action;
 
       return {
         ...state,
         error: error,
-        fetching: false
-      }
+        fetching: false,
+      };
     }
 
     case REDUX_SAGA_LOCATION_CLEAR_REQUEST: {
       return {
         ...state,
-        fetching: false
-      }
+        fetching: false,
+      };
     }
 
     case REDUX_SAGA_LOCATION_STOP_REQUEST: {
+      // Stop observing is deprecated in react-native-community/geolocation
+      // switch to clearWatch as soon as possible
       return {
         ...state,
-        fetching: false
-      }
+        fetching: false,
+      };
     }
-
 
     default: {
       return state;

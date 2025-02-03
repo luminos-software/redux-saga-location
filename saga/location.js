@@ -9,7 +9,7 @@ import {
   REDUX_SAGA_LOCATION_ACTION_SET_ERROR,
   REDUX_SAGA_LOCATION_ACTION_SET_POSITION,
   REDUX_SAGA_LOCATION_CLEAR_REQUEST,
-  REDUX_SAGA_LOCATION_STOP_REQUEST
+  REDUX_SAGA_LOCATION_STOP_REQUEST,
 } from "../actions";
 
 export function* clearWatch(watchId) {
@@ -20,39 +20,41 @@ export function* clearWatch(watchId) {
 export function* getCurrentPosition(options) {
   locationChannel.put({ type: REDUX_SAGA_LOCATION_ACTION_REQUEST });
   Geolocation.getCurrentPosition(
-    position => {
+    (position) => {
       locationChannel.put({
         type: REDUX_SAGA_LOCATION_ACTION_SET_POSITION,
-        position
+        position,
       });
     },
-    error =>
+    (error) =>
       locationChannel.put({
         type: REDUX_SAGA_LOCATION_ACTION_SET_ERROR,
-        error
+        error,
       }),
     options
   );
 }
 
 export function* stopObserving() {
+  // Stop observing is deprecated in react-native-community/geolocation
+  // switch to clearWatch as soon as possible
   locationChannel.put({ type: REDUX_SAGA_LOCATION_STOP_REQUEST });
   Geolocation.stopObserving();
 }
 
 export function* watchCurrentPosition(options) {
   locationChannel.put({ type: REDUX_SAGA_LOCATION_ACTION_REQUEST });
-  Geolocation.watchPosition(
-    position => {
+  return Geolocation.watchPosition(
+    (position) => {
       locationChannel.put({
         type: REDUX_SAGA_LOCATION_ACTION_SET_POSITION,
-        position
+        position,
       });
     },
-    error =>
+    (error) =>
       locationChannel.put({
         type: REDUX_SAGA_LOCATION_ACTION_SET_ERROR,
-        error
+        error,
       }),
     options
   );

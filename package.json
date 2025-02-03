@@ -1,6 +1,6 @@
 {
   "name": "redux-saga-location",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Location-support for redux-saga",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   "author": "Hagen Huebel <hhuebel@itinance.com> (hhuebel@itinance.com)",
   "license": "MIT",
   "peerDependencies": {
-    "@react-native-community/geolocation": "2.0.2"
+    "@react-native-community/geolocation": "3.4.0"
   },
   "devDependencies": {
     "flow-bin": "0.28.0",
